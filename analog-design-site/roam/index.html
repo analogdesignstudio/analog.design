@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>roam — the alarm clock for people who change time zones</title>
+<meta name="description" content="roam is the simplest alarm clock ever. Alarms belong to places: set one in a time zone and it rings only while you're there. Support and privacy policy.">
+<link rel="icon" href="/roam/icon.png" type="image/png">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  html, body { background: #000; color: #fff; }
+  body {
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    width: 100%;
+    max-width: 1280px;            /* fills the screen; a soft cap on very wide monitors */
+    padding: 72px 48px 96px;      /* same gutter as the home page */
+    flex: 1;
+  }
+  .mark { display: block; margin-bottom: 72px; }
+  .mark img { display: block; width: clamp(220px, 26vw, 380px); height: auto; }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+  }
+  p { font-size: clamp(16px, 0.55vw + 10px, 21px); line-height: 1.55; margin-bottom: 24px; }
+  p.lead { font-size: clamp(21px, 1.2vw + 12px, 34px); line-height: 1.4; font-weight: 300; margin-bottom: 40px; }
+  h1 {
+    font-weight: 900;
+    font-size: clamp(22px, 1vw + 14px, 32px);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin: 48px 0 12px;
+  }
+  h3 { font-size: clamp(16px, 0.55vw + 10px, 21px); font-weight: 700; margin: 28px 0 6px; }
+  h3 + p { color: rgba(255,255,255,0.85); }
+  .orange { color: #FF5A14; }
+  .green { color: #2F9E5B; }
+  section { padding-top: 96px; }
+  section .eyebrow { margin-bottom: 48px; }
+  a { color: #fff; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,0.5); }
+  a:hover { text-decoration-color: #fff; }
+
+  /* ---- analog design wordmark, bottom left, on every page ------------ */
+  footer { width: 100%; padding: 0 48px 48px; }
+  .wordmark {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: clamp(26px, 3.6vw, 44px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #fff;
+  }
+  .wordmark .hollow { color: transparent; -webkit-text-stroke: 1.25px #fff; text-stroke: 1.25px #fff; }
+  @media (max-width: 640px) { main { padding: 48px 24px 64px; } footer { padding: 0 24px 32px; } }
+</style>
+</head>
+<body>
+<main>
+  <a class="mark" href="/roam/" aria-label="roam">
+    <img src="/roam/wordmark.svg" alt="roam">
+  </a>
+
+  <p class="eyebrow">roam for iPhone · iOS 26 and later</p>
+
+  <p class="lead">roam is the simplest alarm clock ever, and it doesn't jolt you awake. Alarms belong to places: set one in a time zone and it rings only while you're there.</p>
+
+  <p>Spin the globe to a zone, tap a time, and that's your alarm. Land in Tokyo and your Tokyo alarms wake up; your Los Angeles ones go quiet until you're home. No account, no server, no analytics — everything stays on your phone.</p>
+
+  <!-- ================================================================ -->
+  <section id="support">
+    <h1>Support</h1>
+    <p class="eyebrow">How it works, common questions, and how to reach us</p>
+
+    <h2>How it works</h2>
+    <p>Spin the globe to a zone, or tap the city name and type one. Tap a time — that's a one-off alarm for today or tomorrow. Hold a time for two seconds and it becomes a repeat on the lit day letters. Swipe left for every alarm in every zone.</p>
+    <p>An alarm is <span class="green">active</span> when your phone is in its zone and inactive everywhere else. Land in Tokyo and your Tokyo alarms wake up; your Los Angeles ones go quiet until you're home.</p>
+
+    <h2>Questions</h2>
+
+    <h3>My alarm didn't ring.</h3>
+    <p>Check that your phone is actually in the alarm's zone — the city name on the globe turns green when it is, and the tray lists it under ACTIVE. An alarm set for a zone you're not in waits until you arrive. Also check that roam is allowed to schedule alarms: Settings → roam.</p>
+
+    <h3>It rang in a different city than I set.</h3>
+    <p>roam matches zones by their clock, not their name. A Los Angeles alarm rings in Phoenix while both are on the same hour, and a Paris alarm rings in Berlin. That's by design: you asked to be woken at 7, and it's 7.</p>
+
+    <h3>How do I make an alarm repeat?</h3>
+    <p>Hold a time for two seconds. If no day letters are lit, roam lights Monday to Friday for you; tap letters to change the days. Repeats are <span class="orange">orange</span>, one-offs are white.</p>
+
+    <h3>How do I delete an alarm?</h3>
+    <p>Tap its pill on the grid to clear it, or swipe its row left in the tray. One-off alarms clear themselves after they ring.</p>
+
+    <h3>How do I change the sound?</h3>
+    <p>Open the tray, find the alarm, tap the small speaker on its row. Eight tones; tap one to hear it and choose it.</p>
+
+    <h3>Why is it so quiet at first?</h3>
+    <p>On purpose. The sound starts near silence and builds over about sixteen seconds, and it never goes above half volume. The level follows your phone's ringer volume.</p>
+
+    <h3>I changed time zones and nothing happened.</h3>
+    <p>Open roam after you land. It re-checks the zone every time it comes to the front, arms the alarms for where you are, and quiets the rest.</p>
+
+    <h3>Does roam work on iPad or older iPhones?</h3>
+    <p>No. roam needs the alarm system introduced in iOS 26, so it runs on iPhones with iOS 26 or later.</p>
+
+    <h2>Get in touch</h2>
+    <p>Found a bug, or have a zone that's wrong? Say what you set, where you were, and what happened. Write to <a href="mailto:helloanalogdesign@gmail.com?subject=roam">helloanalogdesign@gmail.com</a>.</p>
+  </section>
+
+  <!-- ================================================================ -->
+  <section id="privacy">
+    <h1>Privacy</h1>
+    <p class="eyebrow">Effective 2 November 2026</p>
+
+    <p class="lead">Everything you put into roam stays on your phone. Nothing is sent anywhere. Nothing is collected.</p>
+
+    <h2>What roam stores</h2>
+    <p>Your alarms, their names and tones, the days you've chosen for each zone, and a small count of which times you set most often. All of it lives in one file on your iPhone and goes with the app if you delete it.</p>
+
+    <h2>What roam reads</h2>
+    <p>Your phone's current time zone, so it knows which alarms to arm. roam does not use GPS, does not ask for your location, and does not know where you are beyond the zone your phone reports.</p>
+
+    <h2>What roam sends</h2>
+    <p>Nothing. roam has no server, no account, no sign-in and no analytics. It makes no network connections of its own.</p>
+
+    <h2>Permissions</h2>
+    <p>roam asks iOS for one permission: to schedule alarms. That is what lets it ring while your phone is locked. You can withdraw it at any time in Settings.</p>
+
+    <h2>Children</h2>
+    <p>roam is not directed at children and collects no information from anyone, of any age.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy ever changes, the new version will be posted here with a new effective date.</p>
+
+    <h2>Questions</h2>
+    <p>Write to <a href="mailto:helloanalogdesign@gmail.com">helloanalogdesign@gmail.com</a>.</p>
+  </section>
+</main>
+<footer>
+  <a class="wordmark" href="/"><span class="hollow">analog</span> design</a>
+</footer>
+</body>
+</html>
